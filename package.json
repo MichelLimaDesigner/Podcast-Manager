@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "start:dev": "tsx src/server.ts",
-    "start:watch": "tsx watch src/serve.ts",
+    "start:watch": "tsx watch src/server.ts",
     "dist": "tsup src",
-    "start:dist": "npm run dist && node/serve.js"
+    "start:dist": "npm run dist && node/server.js"
   },
   "keywords": [],
   "author": "",

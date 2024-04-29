@@ -2,14 +2,18 @@ import { PodcastTransferModel } from "../models/podcast-transfer-model";
 import { repositoryPodcast } from "../repositories/podcasts-repository";
 import { StatusCode } from "../utils/status-code";
 
-export const serviceListEpisodes = async (): Promise<PodcastTransferModel> => {
+export const serviceFilterPodcast = async (
+  podcastName: string | undefined
+): Promise<PodcastTransferModel> => {
   // define the return interface
   let responseFormat: PodcastTransferModel = {
     statusCode: 0,
     body: [],
   };
 
-  const data = await repositoryPodcast();
+  // Search data
+  const queryString = podcastName?.split("?p=")[1] ?? "";
+  const data = await repositoryPodcast(queryString);
 
   // verify data content
   responseFormat.statusCode =
